@@ -1,0 +1,20 @@
+class Solution(object):
+    def canThreePartsEqualSum(self, A):
+        """
+        :type A: List[int]
+        :rtype: bool
+        """
+        if sum(A) % 3 != 0:
+            return False
+        tar = sum(A) // 3
+        count = 0
+        cur = 0
+        for i in A:
+            cur += i
+            if cur == tar:
+                count += 1
+                cur = 0
+        return count >= 3
+--------------------------------------
+计算三分之一数组之和 ，不是整数就直接返回False
+否则，计算能组成和为三分之一sum(A)的字串个数，大于等于3就返回True，反之False
