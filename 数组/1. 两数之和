@@ -1,0 +1,15 @@
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        n = len(nums)
+        lookup = {}
+        for i in range(n):
+            a = target - nums[i]
+            if a in lookup:
+                return [i, lookup[a]]
+            else:
+                lookup[nums[i]] = i
