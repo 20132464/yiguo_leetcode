@@ -22,3 +22,7 @@ class Solution:
         root.left = self.reConstructBinaryTree(pre[1:ind+1],tin[:ind])
         root.right = self.reConstructBinaryTree(pre[ind+1:],tin[ind+1:])
         return root
+    
+#     https://blog.csdn.net/xiayiye123/article/details/98204406
+# https://blog.csdn.net/Iris_6713/article/details/100824970
+# https://blog.csdn.net/qq_18254385/article/details/94596585
