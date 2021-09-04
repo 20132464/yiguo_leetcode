@@ -1,0 +1,34 @@
+def topk(nums, k):
+    n = len(nums)
+    array = nums[:k]
+    build(array) # 建堆
+    print('array0:', array)
+    for i in range(k, n):
+        if nums[i] > array[0]:
+            array[0] = nums[i]
+            build(array) # 重新建堆
+            print('array1:', array)
+#     for i in range(k):
+#         array[0], array[k - i - 1] = array[k - i - 1], array[0]
+#         down(array,0,i -1) # 
+    return array
+def build(num):
+    n = len(num)
+    for i in range(n//2-1, -1, -1):
+        down(num, i, n)
+def down(num, ind, n):
+    while ind * 2 + 1 < n:
+        left = ind * 2 + 1
+        right = ind * 2 + 2
+        if num[ind] < num[left] and (right >= n or num[ind] < num[right]):
+            return
+        elif num[left] < num[ind] and (right >= n or num[left] < num[right]):
+            num[ind], num[left] = num[left], num[ind]
+            ind = left    
+        else:
+            num[ind], num[right] = num[right], num[ind]
+            ind = right
+topk([2,3,0,10,1,5,19,4,-3,28,7,-9,23], 4)  
+
+# https://mp.weixin.qq.com/s/FFsvWXiaZK96PtUg-mmtEw
+# 具体思路可以看这个链接
